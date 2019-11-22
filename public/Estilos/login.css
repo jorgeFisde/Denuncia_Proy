@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(245, 245, 245);
+}
+.content{
+    text-align: center;
+    margin-top: 100px;
+    height: 400px;
+    max-width: 500px;
+    padding: 5px;
+    background-color: rgb(217, 223, 218);
+    border-radius: 10px;
+}
+.content .title h4{
+    color: #fff;
+    margin-top: 50px;
+    font-size: 40px;
+}
+
+.content form{
+    margin-top: 50px;
+}
+
+.content form .btn{
+    background-color: rgb(53, 50, 255);
+    font-size: 15px;
+    width: 300px;
+}
