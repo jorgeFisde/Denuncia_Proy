@@ -22,8 +22,8 @@ const fileFilter = (req, file, cb) =>{
 }
 
 const upload = multer({
-    storage,
-    fileFilter
+    storage: storage,
+    fileFilter: fileFilter
 })
 
 router.get('/reportes', (req, res) => {
@@ -49,11 +49,11 @@ router.get('/api/ver_reportes', (req, res) => {
 
 router.post('/api/crear_reporte', upload.single('subirFoto') , (req, res) => {
     var emp = req.body
-    var subirFoto = req.file.path
+    var foto = req.file.path
     var sql = `
     CALL crear_Reporte(?,?,?,?,?,?)    
     `
-    DB_conection.query(sql, [emp.Descripcion, emp.Categoria, subirFoto, emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
+    DB_conection.query(sql, [emp.Descripcion, emp.Categoria, foto, emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
         if (err) {
             res.send('Hubo un error al crear el reporte')
             console.log('*** ERROR: ', err);
