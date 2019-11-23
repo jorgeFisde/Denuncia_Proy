@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const DB_conection = require('../service/database')
 const path = require('path')
+const multer = require('multer')
 var upload = multer({ dest: 'public/Uploads/' })
 
 
