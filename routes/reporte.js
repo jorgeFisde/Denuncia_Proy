@@ -5,9 +5,8 @@ const multer = require('multer')
 
 // subir imagenes a un servidor
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, '../public/Uploads')
-    },
+    destination: path.join( __dirname + '../public/Uploads'),
+    
     filename: (req, file, cb) => {
         cb(null, file.originalname + '-' + Date.now())
     }
