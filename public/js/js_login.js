@@ -17,7 +17,7 @@ formulario.addEventListener('submit',(e)=>{
         },
         body: JSON.stringify(data)
     }
-    var myRequest = new Request('http://localhost:3000/api/web_login', options)
+    var myRequest = new Request('http://18.218.255.127:3000/api/web_login', options)
      fetch(myRequest)
      .then(data => data.text() )
      .then(response => {
