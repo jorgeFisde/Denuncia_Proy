@@ -68,6 +68,6 @@ router.post('/api/crear_reporte',upload.single('foto') , (req, res) => {
       })*/
 
 })
-})
+
 
 module.exports = router
