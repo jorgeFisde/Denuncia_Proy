@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const DB_conection = require('../service/database')
-const path = require('path')
 const multer = require('multer')
 var upload = multer({ dest: 'public/Uploads/' })
 
@@ -49,7 +48,6 @@ router.get('/api/ver_reportes', (req, res) => {
 
 router.post('/api/crear_reporte',upload.single('foto') , (req, res) => {
     var emp = req.body
-    var foto = req.file.path
     var sql = `
     CALL crear_Reporte(?,?,?,?,?,?)    
     `
