@@ -46,21 +46,28 @@ router.get('/api/ver_reportes', (req, res) => {
     })
 })
 
-router.post('/api/crear_reporte', upload , (req, res) => {
+router.post('/api/crear_reporte', (req, res) => {
     var emp = req.body
     var foto = req.file.path
     var sql = `
     CALL crear_Reporte(?,?,?,?,?,?)    
     `
-    DB_conection.query(sql, [emp.Descripcion, emp.Categoria, foto, emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
+    upload(req , res ,(err)=>{
         if (err) {
-            res.send('Hubo un error al crear el reporte')
-            console.log('*** ERROR: ', err);
-
+            console.log(err);
+            res.send('error')
         } else {
-            res.send('Reporte enviado!')
-            console.log('Reporte creado!');
-
+            DB_conection.query(sql, [emp.Descripcion, emp.Categoria, foto, emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
+                if (err) {
+                    res.send('Hubo un error al crear el reporte')
+                    console.log('*** ERROR: ', err);
+        
+                } else {
+                    res.send('Reporte enviado!')
+                    console.log('Reporte creado!');
+        
+                }
+            })
         }
     })
 })
