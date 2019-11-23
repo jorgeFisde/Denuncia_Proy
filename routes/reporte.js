@@ -6,10 +6,10 @@ const multer = require('multer')
 // subir imagenes a un servidor
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname + 'public/Uploads'))
+        cb(null, path.join(__dirname + '../public/Uploads'))
     },
     filename: (req, file, cb) => {
-        cb(null, file.filename + '-' + Date.now())
+        cb(null, file.originalname + '-' + Date.now())
     }
 })
 
@@ -23,7 +23,6 @@ const fileFilter = (req, file, cb) =>{
 
 const upload = multer({
     storage: storage,
-    fileFilter: fileFilter
 })
 
 router.get('/reportes', (req, res) => {
