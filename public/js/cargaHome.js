@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
         },
 
     }
-    var myRequest = new Request('http://localhost:3000/api/ver_reportes', options)
+    var myRequest = new Request('http://18.218.255.127:3000/api/ver_reportes', options)
     var request = await fetch(myRequest)
     var resultado = await request.json()
     resultado.forEach(reporte => {

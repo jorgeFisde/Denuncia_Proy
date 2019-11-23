@@ -1,4 +1,4 @@
-
+//  SERVIDOR:   http://18.218.255.127:3000/
 var formulario = document.getElementById('form')
 var abc = document.getElementById('sino')
 formulario.addEventListener('submit',(e)=>{
@@ -26,7 +26,7 @@ formulario.addEventListener('submit',(e)=>{
             alert(dato)
             
         } else {
-            window.location.replace('http://localhost:3000/home')
+            window.location.replace('http://18.218.255.127:3000/home')
         }
      })
      .catch((err) => {
