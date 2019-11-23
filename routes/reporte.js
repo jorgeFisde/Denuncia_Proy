@@ -23,7 +23,7 @@ const fileFilter = (req, file, cb) =>{
 
 const upload = multer({
     storage: storage,
-})
+}).single('subirFoto')
 
 router.get('/reportes', (req, res) => {
     // Renderizar template (opcional)
@@ -46,7 +46,7 @@ router.get('/api/ver_reportes', (req, res) => {
     })
 })
 
-router.post('/api/crear_reporte', upload.single('subirFoto') , (req, res) => {
+router.post('/api/crear_reporte', upload , (req, res) => {
     var emp = req.body
     var foto = req.file.path
     var sql = `
