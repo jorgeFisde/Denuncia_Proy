@@ -1,7 +1,32 @@
 const router = require('express').Router()
 const DB_conection = require('../service/database')
+const path = require('path')
+const multer = require('multer')
 
-router.get('/reportes',(req,res)=>{
+// subir imagenes a un servidor
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname + 'public/Uploads'))
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.filename + '-' + Date.now())
+    }
+})
+
+const fileFilter = (req, file, cb) =>{
+    if (file.mimetype === 'image/jpg' || file.mimetype === 'image.png') {
+        cb(null,true)
+    } else {
+        cb(null,false)
+    }
+}
+
+const upload = multer({
+    storage,
+    fileFilter
+})
+
+router.get('/reportes', (req, res) => {
     // Renderizar template (opcional)
 })
 
@@ -22,12 +47,13 @@ router.get('/api/ver_reportes', (req, res) => {
     })
 })
 
-router.post('/api/crear_reporte', (req, res) => {
+router.post('/api/crear_reporte', upload.single('subirFoto') , (req, res) => {
     var emp = req.body
+    var subirFoto = req.file.path
     var sql = `
     CALL crear_Reporte(?,?,?,?,?,?)    
     `
-    DB_conection.query(sql, [emp.Descripcion, emp.Categoria, emp.img, emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
+    DB_conection.query(sql, [emp.Descripcion, emp.Categoria, subirFoto, emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
         if (err) {
             res.send('Hubo un error al crear el reporte')
             console.log('*** ERROR: ', err);
