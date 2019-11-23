@@ -57,7 +57,9 @@ router.post('/api/crear_reporte', (req, res) => {
             console.log(err);
             res.send('error')
         } else {
-            DB_conection.query(sql, [emp.Descripcion, emp.Categoria, foto, emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
+            console.log(req.file.path);
+            
+          /*  DB_conection.query(sql, [emp.Descripcion, emp.Categoria, foto, emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
                 if (err) {
                     res.send('Hubo un error al crear el reporte')
                     console.log('*** ERROR: ', err);
@@ -67,7 +69,7 @@ router.post('/api/crear_reporte', (req, res) => {
                     console.log('Reporte creado!');
         
                 }
-            })
+            })*/
         }
     })
 })
