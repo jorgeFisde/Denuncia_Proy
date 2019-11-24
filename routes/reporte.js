@@ -46,25 +46,24 @@ router.post('/api/crear_reporte', (req, res) => {
                 error: 'error'
             })
         } else {
-            return res.json({
-                okey: 'path: ' + req.file.location
+
+            DB_conection.query(sql, [emp.Descripcion, emp.Categoria, req.file.location , emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
+                if (err) {
+                    res.send('Hubo un error al crear el reporte')
+                    console.log('*** ERROR: ', err);
+        
+                } else {
+                    res.send('Reporte enviado!')
+                    console.log('Reporte creado!');
+        
+                }
             })
         }
        
     })
     
 
-    /*  DB_conection.query(sql, [emp.Descripcion, emp.Categoria, foto, emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
-          if (err) {
-              res.send('Hubo un error al crear el reporte')
-              console.log('*** ERROR: ', err);
-  
-          } else {
-              res.send('Reporte enviado!')
-              console.log('Reporte creado!');
-  
-          }
-      })*/
+    /*  */
 
 })
 
