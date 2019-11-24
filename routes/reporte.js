@@ -40,9 +40,17 @@ router.post('/api/crear_reporte', (req, res) => {
     CALL crear_Reporte(?,?,?,?,?,?)    
     `
     upload(req,res,(err)=>{
-       return res.json({
-            okey: 'path: ' + req.file.location
-        })
+        if (err) {
+            console.log(err);
+            res.json({
+                error: 'error'
+            })
+        } else {
+            return res.json({
+                okey: 'path: ' + req.file.location
+            })
+        }
+       
     })
     
 
