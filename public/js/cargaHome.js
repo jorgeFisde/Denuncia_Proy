@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded',async ()=>{
                     </div>
                 </div>
             </div>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKt_se1bTXJ3QR82tS7N3ZWYfY0SaJLXo&callback=iniciarMap"></script>
             <script>
             function iniciarMap(){
                 var coord = {lat:-34.5956145 ,lng: -58.4431949};
@@ -65,6 +64,8 @@ document.addEventListener('DOMContentLoaded',async ()=>{
                 });
             }
             </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKt_se1bTXJ3QR82tS7N3ZWYfY0SaJLXo&callback=iniciarMap"></script>
+            
         `
     });
     
