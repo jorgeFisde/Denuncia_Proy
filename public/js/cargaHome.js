@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',async ()=>{
+document.addEventListener('DOMContentLoaded', async () => {
 
     var options = {
         method: 'GET',
@@ -29,6 +29,21 @@ document.addEventListener('DOMContentLoaded',async ()=>{
                         <div class="col-md-6">
                             <div class="mapouterv ">
                                 <div id="map"
+
+                                <script>
+            function iniciarMap(){
+                var coord = {lat:-34.5956145 ,lng: -58.4431949};
+                var map = new google.maps.Map(document.getElementById('map'),{
+                  zoom: 10,
+                  center: coord
+                });
+                var marker = new google.maps.Marker({
+                  position: coord,
+                  map: map
+                });
+            }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKt_se1bTXJ3QR82tS7N3ZWYfY0SaJLXo&callback=iniciarMap"></script>
                                 </div>
 
                             </div>
@@ -51,23 +66,12 @@ document.addEventListener('DOMContentLoaded',async ()=>{
                     </div>
                 </div>
             </div>
-            <script>
-            function iniciarMap(){
-                var coord = {lat:-34.5956145 ,lng: -58.4431949};
-                var map = new google.maps.Map(document.getElementById('map'),{
-                  zoom: 10,
-                  center: coord
-                });
-                var marker = new google.maps.Marker({
-                  position: coord,
-                  map: map
-                });
-            }
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKt_se1bTXJ3QR82tS7N3ZWYfY0SaJLXo&callback=iniciarMap"></script>
+            
+            
+            
             
         `
     });
-    
-    
+
+
 })
