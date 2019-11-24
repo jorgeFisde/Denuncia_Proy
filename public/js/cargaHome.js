@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
                         <p>Descripcion del estado: ${reporte.DescripcionEstado}</p>
                         </div>
                         <div class="col-md-6">
-                            <img src="./img/ejemplo.jpg" alt="">
+                            <img src="https://proyecto-denuncia.s3.us-west-1.amazonaws.com/483528.jpg" alt="">
                         </div>
                         <div class="col-md-6">
                             <div class="mapouterv ">
