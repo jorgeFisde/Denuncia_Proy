@@ -12,17 +12,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     var resultado = await request.json()
     resultado.forEach(reporte => {
         const div = document.getElementById('Most')
-        function iniciarMap(){
-            var coord = {lat:-34.5956145 ,lng: -58.4431949};
-            var map = new google.maps.Map(document.getElementById('map'),{
-              zoom: 10,
-              center: coord
-            });
-            var marker = new google.maps.Marker({
-              position: coord,
-              map: map
-            });
-        }
+        
         div.innerHTML = ''
         div.innerHTML = `
         <div class="col-md-6 col-md-offset-3">
@@ -62,7 +52,21 @@ document.addEventListener('DOMContentLoaded',async ()=>{
                     </div>
                 </div>
             </div>
-            
+            <script>
+            function iniciarMap(){
+                var coord = {lat:-34.5956145 ,lng: -58.4431949};
+                var map = new google.maps.Map(document.getElementById('map'),{
+                  zoom: 10,
+                  center: coord
+                });
+                var marker = new google.maps.Marker({
+                  position: coord,
+                  map: map
+                });
+            }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
+
             
             
            
