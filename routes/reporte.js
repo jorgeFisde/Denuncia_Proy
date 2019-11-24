@@ -32,13 +32,19 @@ router.get('/api/ver_reportes', (req, res) => {
     })
 })
 
-router.post('/api/crear_reporte',subirImg.single('foto') , (req, res) => {
+const upload = subirImg.single('foto')
+
+router.post('/api/crear_reporte', (req, res) => {
     var emp = req.body
     var sql = `
     CALL crear_Reporte(?,?,?,?,?,?)    
     `
-    console.log(req.file.path);
-    res.send('ok')
+    upload(req,res,(err)=>{
+       return res.json({
+            okey: 'path: ' + req.file.location
+        })
+    })
+    
 
     /*  DB_conection.query(sql, [emp.Descripcion, emp.Categoria, foto, emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
           if (err) {
