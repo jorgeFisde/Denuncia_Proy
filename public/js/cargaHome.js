@@ -73,9 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             
 
     });
-    console.log(arregloCoord);
-    console.log(arregloMapas);
-    
+
     
             const mapa = document.getElementById('mapa')   
             mapa.setAttribute('src','https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap')
@@ -92,7 +90,14 @@ function iniciarMap() {
             position: arregloCoord[index],
             map: map
         })
+        console.log(map);
+        
+        
+        
+
     }
+    console.log(arregloCoord);
+    console.log(arregloMapas);
     //var coord = { lat: lat, lng: lon };
     /*var map = new google.maps.Map(document.getElementById(`map${id}`), {
         zoom: 30,

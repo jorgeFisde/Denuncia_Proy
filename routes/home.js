@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const jwt = require('jsonwebtoken')
 const DB_conection = require('../service/database')
+const login = require('../routes/login')
 
 router.get('/home', (req, res) => {
     //renderizar home
@@ -8,7 +9,7 @@ router.get('/home', (req, res) => {
 })
 
 
-router.get('/api/home', (req, res) => {
+router.get('/api/home', login.verifyToken,(req, res) => {
     sql = `
     SELECT * FROM MisReportes WHERE idUsuario = ?
     `
