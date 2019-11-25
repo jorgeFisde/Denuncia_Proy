@@ -14,7 +14,7 @@ router.get('/login', (req, res) => {
 router.post('/api/login', (req, res) => {
     var email = req.body.email
     var password = req.body.password
-    const user = {}
+    var user = {}
     var sql = `
     SELECT id,nombre,apellido,fecha_de_nacimiento,email,es_Administrador FROM Usuario 
     WHERE email = ? AND contraseña = sha1(?)    
