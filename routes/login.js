@@ -18,7 +18,7 @@ router.post('/api/login', (req, res) => {
     SELECT id,nombre,apellido,fecha_de_nacimiento,email,es_Administrador FROM Usuario 
     WHERE email = ? AND contraseña = sha1(?)    
     `
-    if (email & password) {
+    if (email && password) {
         DB_conection.query(sql, [email, password], (err, rows) => {
             if (err) {
                 res.json('Email o contraseña incorrecta!')
