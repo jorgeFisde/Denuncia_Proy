@@ -14,34 +14,26 @@ router.get('/login', (req, res) => {
 router.post('/api/login', (req, res) => {
     var email = req.body.email
     var password = req.body.password
+    const user = {}
     var sql = `
     SELECT id,nombre,apellido,fecha_de_nacimiento,email,es_Administrador FROM Usuario 
     WHERE email = ? AND contraseña = sha1(?)    
     `
     if (email && password) {
         DB_conection.query(sql, [email, password], (err, Result) => {
-            if (err) {
+            if (Result.length < 0) {
                 res.json('Email o contraseña incorrecta!')
                 console.log('*** ERROR: ', err);
 
             } else {
+                user = Result[0]
+                console.log(user);
                 
-                if (Result.length = 0) {
-                    console.log('no se encontro el usuario');
-                    
-                    res.send('no se encontro el usuario')
-                } else {
-                    
-                    const user = Result[0]
-                    console.log(user);
-                    
-                    const token = jwt.sign({ user }, 'my_secret_key', { expiresIn: '1h' }, (err, token) => {
-                        res.json({
-                            token: token
-                        })
+                const token = jwt.sign({ user }, 'my_secret_key', { expiresIn: '1h' }, (err, token) => {
+                    res.json({
+                        token: token
                     })
-                }
-
+                })
             }
         })
     } else {
