@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     
             const mapa = document.getElementById('mapa')   
-            //mapa.setAttribute('src','https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap')
+            
 
 })
 
