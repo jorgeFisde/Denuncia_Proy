@@ -12,7 +12,7 @@ router.post('/api/registro', (req, res) => {
     `
     DB_conection.query(sql, [emp.nombre, emp.apellido, emp.fechaN, emp.email, emp.password], (err, result) => {
         if (err) {
-            res.send('hubo un error al crear el usuario')
+            res.send(err.sqlMessage)
             console.log('*** ERROR: ', err);
             
         } else {
