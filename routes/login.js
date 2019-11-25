@@ -21,11 +21,8 @@ router.post('/api/login', (req, res) => {
     `
     if (email && password) {
         DB_conection.query(sql, [email, password], (err, Result) => {
-            if (Result.length < 0) {
-                res.json('Email o contraseña incorrecta!')
-                console.log('*** ERROR: ', err);
-
-            } else {
+            if (Result.length > 0) {
+                
                 user = Result[0]
                 console.log(user);
                 
@@ -34,6 +31,10 @@ router.post('/api/login', (req, res) => {
                         token: token
                     })
                 })
+
+            } else {
+                res.json('Email o contraseña incorrecta!')
+                console.log('*** ERROR: ', err);
             }
         })
     } else {
