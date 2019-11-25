@@ -19,7 +19,7 @@ router.get('/api/home', login.verifyToken,(req, res) => {
             console.log('token invalido')
 
         } else {
-            DB_conection.query(sql, [data.user.id], (err, result) => {
+            /*DB_conection.query(sql, [data.user.id], (err, result) => {
                 if (err) {
                     res.send('hubo un error al acceder')
                     console.log('**Error: ' + err);
@@ -28,7 +28,8 @@ router.get('/api/home', login.verifyToken,(req, res) => {
                     data.user.misReportes = result
                     res.json(data.user.misReportes) 
                 }
-            })
+            })*/
+            res.json(data.user) 
         }
     })
 })
