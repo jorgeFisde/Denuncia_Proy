@@ -25,6 +25,68 @@ document.addEventListener('DOMContentLoaded', async () => {
     div.innerHTML = ''
     resultado.reportes.forEach((element) => {
         div.innerHTML += `
+        <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Reporte de ${element.nombreUsuario} ${element.apellidoUsuario}</h5>
+                <p class="card-text">${element.DescripcionReporte}</p>
+                <a href="#" class="btn btn-primary">visualizar</a>
+            </div>
+        </div>
+        `
+        
+
+                 arregloCoord.push({ lat: parseFloat(element.latitud), lng: parseFloat(element.longitud)})
+                 arregloMapas.push({
+                     mapa: document.getElementById(`map${element.id}`)
+                 })
+
+
+            //iniciarMap(parseFloat(element.latitud), parseFloat(element.longitud), element.id)
+            
+
+    });
+
+    
+            const mapa = document.getElementById('mapa')   
+            //mapa.setAttribute('src','https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap')
+
+})
+
+function iniciarMap() {
+    for (let index = 0; index < arregloCoord.length; index++) {
+        var map = new google.maps.Map((arregloMapas[index].mapa), {
+            zoom: 30,
+            center: arregloCoord[index]
+        })
+        var marker = new google.maps.Marker({
+            position: arregloCoord[index],
+            map: map
+        })
+        console.log(map);
+        
+        
+        
+
+    }
+    console.log(arregloCoord);
+    console.log(arregloMapas);
+    //var coord = { lat: lat, lng: lon };
+    /*var map = new google.maps.Map(document.getElementById(`map${id}`), {
+        zoom: 30,
+        center: coord
+    });
+    var marker = new google.maps.Marker({
+        position: coord,
+        map: map
+    });*/
+} 
+
+
+
+
+/*
+`
         <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default col-md-12 ">
                     <div class="panel-heading">ID del reporte: ${element.id}</div>
@@ -61,51 +123,4 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
             
                     `
-        
-
-                 arregloCoord.push({ lat: parseFloat(element.latitud), lng: parseFloat(element.longitud)})
-                 arregloMapas.push({
-                     mapa: document.getElementById(`map${element.id}`)
-                 })
-
-
-            //iniciarMap(parseFloat(element.latitud), parseFloat(element.longitud), element.id)
-            
-
-    });
-
-    
-            const mapa = document.getElementById('mapa')   
-            mapa.setAttribute('src','https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap')
-
-})
-
-function iniciarMap() {
-    for (let index = 0; index < arregloCoord.length; index++) {
-        var map = new google.maps.Map((arregloMapas[index].mapa), {
-            zoom: 30,
-            center: arregloCoord[index]
-        })
-        var marker = new google.maps.Marker({
-            position: arregloCoord[index],
-            map: map
-        })
-        console.log(map);
-        
-        
-        
-
-    }
-    console.log(arregloCoord);
-    console.log(arregloMapas);
-    //var coord = { lat: lat, lng: lon };
-    /*var map = new google.maps.Map(document.getElementById(`map${id}`), {
-        zoom: 30,
-        center: coord
-    });
-    var marker = new google.maps.Marker({
-        position: coord,
-        map: map
-    });*/
-} 
-
+*/
