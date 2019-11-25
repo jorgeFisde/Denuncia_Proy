@@ -335,7 +335,7 @@ padding: 0
     width: 600px;
     height: 100px;
 }
-#map {
-	height: 200px;
-	width: 200px;
+.map {
+	height: 300px;
+	width: 300px;
 }

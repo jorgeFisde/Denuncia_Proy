@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="Estilos/responsive.css">
 
     
+
 </head>
 
 <body>
@@ -50,7 +51,8 @@
                                 <span class="mini-click-non">Reportes</span>
                             </a>
                             <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Dashboard v.1" href="/#"><span class="mini-sub-pro">Mi informacion</span></a></li>
+                                <li><a title="Dashboard v.1" href="/#"><span class="mini-sub-pro">Mi
+                                            informacion</span></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -60,7 +62,7 @@
     </div>
     <!-- Start Welcome area -->
     <div class="all-content-wrapper">
-        
+
         <div class="header-advance-area">
             <div class="header-top-area">
                 <div class="container-fluid">
@@ -93,9 +95,9 @@
         </div>
         <!--For each Row mostrar esto-->
         <div class="row " id="Most">
-            
+
         </div>
-        
+
 
         <div class="footer-copyright-area">
             <div class="container-fluid">
@@ -110,23 +112,13 @@
             </div>
         </div>
     </div>
-
     <script src="js/cargaHome.js"></script>
-    <script>
-        function iniciarMap(){
-            const coord = {lat:-34.5956145 ,lng: -58.4431949};
-            const map = new google.maps.Map(document.getElementById('map'),{
-                zoom: 10,
-                center: coord
-             });
-            const marker = new google.maps.Marker({
-                position: coord,
-                map: map
-             });
-         } 
-     </script>
-     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
-    
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
+
+
+
 
 </body>
 

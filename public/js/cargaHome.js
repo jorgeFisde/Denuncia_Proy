@@ -1,43 +1,57 @@
-document.addEventListener('DOMContentLoaded',async ()=>{
+//lat: -34.5956145, lng: -58.4431949
+function iniciarMap(lat, lon, id) {
+    var coord = { lat: lat, lng: lon };
+    var map = new google.maps.Map(document.getElementById(`map${id}`), {
+        zoom: 50,
+        center: coord
+    });
+    var marker = new google.maps.Marker({
+        position: coord,
+        map: map
+    });
+}
+const div = document.getElementById('Most')
+
+document.addEventListener('DOMContentLoaded', async () => {
 
     var options = {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
-        },
+        }
 
     }
-    var myRequest = new Request('http://18.218.255.127:3000/api/ver_reportes', options)
+    var myRequest = new Request('http://localhost:3000/api/ver_reportes', options)
     var request = await fetch(myRequest)
     var resultado = await request.json()
-    resultado.forEach(reporte => {
-        const div = document.getElementById('Most')
-        
-        div.innerHTML = ''
-        div.innerHTML = `
+    console.log(resultado);
+
+    div.innerHTML = ''
+    resultado.reportes.forEach((element) => {
+
+        div.innerHTML += `
         <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default col-md-12 ">
-                    <div class="panel-heading">${reporte.id}</div>
+                    <div class="panel-heading">ID del reporte: ${element.id}</div>
                     <div class="row panel-body">
                         <div>
-                        <p>${reporte.DescripcionReporte}</p>
-                        <p>Estado: ${reporte.estado}</p>
-                        <p>Descripcion del estado: ${reporte.DescripcionEstado}</p>
+                        <p>${element.DescripcionReporte}</p>
+                        <p>Estado: ${element.estado}</p>
+                        <p>Descripcion del estado: ${element.DescripcionEstado}</p>
                         </div>
                         <div class="col-md-6">
-                            <img src="${reporte.fotoURL}" alt="">
+                            <img src="${element.fotoURL}" alt="">
                         </div>
-                        <div class="col-md-6">
-                            <div id="map"></div>
+                       
+                            <div id="map${element.id}" class="map"></div>
                             
-            
-                        </div>
+                       
                     </div>
                     <div class="rowForm">
                         <div class="col-md-12">
-                            <form id= '${reporte.id}'>
+                            <form id= '${element.id}'>
                                 <div class="form-group">
-                                    <textarea class= 'comentario' id= 'comentario${reporte.id}' placeholder= 'Escribe un comentario' ></textarea>
+                                    <textarea class= 'comentario' id= 'comentario${element.id}' placeholder= 'Escribe un comentario' ></textarea>
                                 </div>
                                 <div class="checkbox">
                                     <label><input type="checkbox">En proceso</label>
@@ -51,11 +65,12 @@ document.addEventListener('DOMContentLoaded',async ()=>{
                 </div>
             </div>
             
-            
-           
-            
-        `
+                    `
+        iniciarMap(parseFloat(element.latitud), parseFloat(element.longitud), element.id)
+
+
+
     });
-    
-    
+
+
 })
