@@ -1,15 +1,11 @@
 //lat: -34.5956145, lng: -58.4431949
-function iniciarMap(lat, lon, id) {
-    var coord = { lat: lat, lng: lon };
-    var map = new google.maps.Map(document.getElementById(`map${id}`), {
-        zoom: 50,
-        center: coord
-    });
-    var marker = new google.maps.Marker({
-        position: coord,
-        map: map
-    });
-}
+// src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"
+const arregloCoord = []
+const arregloMapas = []
+const yaCargo = false
+
+ 
+
 const div = document.getElementById('Most')
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -28,7 +24,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     div.innerHTML = ''
     resultado.reportes.forEach((element) => {
-
         div.innerHTML += `
         <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default col-md-12 ">
@@ -66,11 +61,46 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
             
                     `
-        iniciarMap(parseFloat(element.latitud), parseFloat(element.longitud), element.id)
+        
+
+                 arregloCoord.push({ lat: parseFloat(element.latitud), lng: parseFloat(element.longitud)})
+                 arregloMapas.push({
+                     mapa: document.getElementById(`map${element.id}`)
+                 })
 
 
+            //iniciarMap(parseFloat(element.latitud), parseFloat(element.longitud), element.id)
+            
 
     });
-
+    console.log(arregloCoord);
+    console.log(arregloMapas);
+    
+    
+            const mapa = document.getElementById('mapa')   
+            mapa.setAttribute('src','https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap')
 
 })
+
+function iniciarMap() {
+    for (let index = 0; index < arregloCoord.length; index++) {
+        var map = new google.maps.Map((arregloMapas[index].mapa), {
+            zoom: 30,
+            center: arregloCoord[index]
+        })
+        var marker = new google.maps.Marker({
+            position: arregloCoord[index],
+            map: map
+        })
+    }
+    //var coord = { lat: lat, lng: lon };
+    /*var map = new google.maps.Map(document.getElementById(`map${id}`), {
+        zoom: 30,
+        center: coord
+    });
+    var marker = new google.maps.Marker({
+        position: coord,
+        map: map
+    });*/
+} 
+

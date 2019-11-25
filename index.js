@@ -4,10 +4,10 @@ const app = express()
 
 //Settings
 app.set('views', path.join(__dirname + '/views'))
-/*
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-*/
+
 //archivos publicos para que sean visibles en la app y servidor
 app.use(express.static(path.join(__dirname + '/public')))
 
