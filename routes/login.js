@@ -19,20 +19,20 @@ router.post('/api/login', (req, res) => {
     WHERE email = ? AND contraseña = sha1(?)    
     `
     if (email && password) {
-        DB_conection.query(sql, [email, password], (err, rows) => {
+        DB_conection.query(sql, [email, password], (err, Result) => {
             if (err) {
                 res.json('Email o contraseña incorrecta!')
                 console.log('*** ERROR: ', err);
 
             } else {
                 
-                if (rows.length = 0) {
+                if (Result.length = 0) {
                     console.log('no se encontro el usuario');
                     
                     res.send('no se encontro el usuario')
                 } else {
                     
-                    var user = rows[0]
+                    const user = Result[0]
                     console.log(user);
                     
                     const token = jwt.sign({ user }, 'my_secret_key', { expiresIn: '1h' }, (err, token) => {
@@ -41,6 +41,7 @@ router.post('/api/login', (req, res) => {
                         })
                     })
                 }
+
             }
         })
     } else {
