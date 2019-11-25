@@ -33,10 +33,12 @@ router.post('/api/login', (req, res) => {
                 } else {
                     
                     var user = rows[0]
-                const token = jwt.sign({ user }, 'my_secret_key', { expiresIn: '1h' }, (err, token) => {
-                    res.json({
-                        token: token
-                    })
+                    console.log(user);
+                    
+                    const token = jwt.sign({ user }, 'my_secret_key', { expiresIn: '1h' }, (err, token) => {
+                        res.json({
+                            token: token
+                        })
                     })
                 }
             }
