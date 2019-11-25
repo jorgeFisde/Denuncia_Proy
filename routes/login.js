@@ -25,12 +25,19 @@ router.post('/api/login', (req, res) => {
                 console.log('*** ERROR: ', err);
 
             } else {
-                var user = rows[0]
+                
+                if (rows.length = 0) {
+                    var user = rows[0]
                 const token = jwt.sign({ user }, 'my_secret_key', { expiresIn: '1h' }, (err, token) => {
                     res.json({
                         token: token
                     })
                 })
+                } else {
+                    console.log('no se encontro el usuario');
+                    
+                    res.send('no se encontro el usuario')
+                }
             }
         })
     } else {

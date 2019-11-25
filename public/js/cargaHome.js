@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     resultado.reportes.forEach((element) => {
         div.innerHTML += `
         <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="${element.fotoURL}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Reporte de ${element.nombreUsuario} ${element.apellidoUsuario}</h5>
                 <p class="card-text">${element.DescripcionReporte}</p>
