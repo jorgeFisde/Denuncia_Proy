@@ -253,7 +253,10 @@ padding: 0
 	border:none;
 }
 
-
+#footer{
+    text-align: center;
+    background-color: rgb(23, 75, 134);
+}
 
 /*----------------------------------------*/
 /*  8. Scroll Area
@@ -326,7 +329,7 @@ padding: 0
 }
 .card{
     margin-top: 50px;
-    margin-left: 30px;
+    margin-left: 10px;
     margin-bottom: 30px;
     background-color: white;
     padding: 10px;
@@ -338,4 +341,17 @@ padding: 0
     height: 50%;
     width: 50%;
     background-color: rgb(255, 255, 255);
+}
+
+#panel{
+    height: 700px;
+    background-color: red;
+}
+#rows{
+    
+
+}
+#panel1{
+    height: 700px;
+    background-color: green;
 }
