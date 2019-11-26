@@ -19,7 +19,7 @@
 /*----------------------------------------*/
 /*  1.  Theme default CSS
 /*----------------------------------------*/
-html, body {height: 100%; width: 100%; font-family: 'Roboto', sans-serif;font-weight:400;background:#7C8A88;}
+html, body {height: 100%; width: 100%; font-family: 'Roboto', sans-serif;font-weight:400;background:rgb(219, 226, 225);}
 .floatleft {float:left}
 .floatright {float:right}
 .alignleft {float:left;margin-right:15px;margin-bottom: 15px}
@@ -266,6 +266,10 @@ padding: 0
 	color:#fff;
 	text-decoration:none;
 }
+.footer-copy-area{
+    margin-bottom: 0px;
+    position: static;
+}
 /*----------------------------------------*/
 /*  8. Scroll Area
 /*----------------------------------------*/
@@ -336,8 +340,17 @@ padding: 0
     height: 100px;
 }
 .card{
-    margin: 200px;
+    margin-top: 50px;
+    margin-left: 30px;
+    margin-bottom: 30px;
     background-color: white;
     padding: 10px;
-    width: 18rem;;
+    width: 400px;
+    display: inline-block ;
+    
+}
+.row-report{
+    text-align: center;
+    height: 100%;
+    background-color: rgb(201, 198, 198);
 }
