@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     div.innerHTML = ''
     resultado.reportes.forEach((element) => {
         div.innerHTML += `
-            <div class="col-md-6 col-md-offset-3">
+            
             
                 <div class="card" style="width: 18rem;">
                 <img src="${element.fotoURL}" class="card-img-top" alt="...">
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </div>
             
-            </div>
+            
         `
         
 

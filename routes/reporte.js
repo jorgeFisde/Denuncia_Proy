@@ -43,7 +43,7 @@ router.get('/api/ver_reportes', (req, res) => {
     CALL crear_Reporte(?,?,?,?,?,?)    
     `
         jwt.verify(req.token,'my-secret-key',(err,data)=>{
-            DB_conection.query(sql, [emp.Descripcion, emp.Categoria, req.file.location, emp.lat, emp.lon, emp.id_usuario], (err, rows) => {
+            DB_conection.query(sql, [emp.Descripcion, emp.Categoria, req.file.location, emp.lat, emp.lon, data.user.id], (err, rows) => {
                 if (err) {
                     res.send('Hubo un error al crear el reporte')
                     console.log('*** ERROR: ', err);

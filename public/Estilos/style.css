@@ -252,24 +252,9 @@ padding: 0
 	background: none;
 	border:none;
 }
-.footer-copyright-area {
-    background: #1b2a47;
-    padding: 20px 0px;
-    text-align: center;
-}
-.footer-copy-right p {
-    margin: 0px;
-    font-size: 15px;
-    color: #fff;
-}
-.footer-copy-right a{
-	color:#fff;
-	text-decoration:none;
-}
-.footer-copy-area{
-    margin-bottom: 0px;
-    position: static;
-}
+
+
+
 /*----------------------------------------*/
 /*  8. Scroll Area
 /*----------------------------------------*/
@@ -345,12 +330,12 @@ padding: 0
     margin-bottom: 30px;
     background-color: white;
     padding: 10px;
-    width: 400px;
     display: inline-block ;
     
 }
 .row-report{
     text-align: center;
-    height: 100%;
-    background-color: rgb(201, 198, 198);
+    height: 50%;
+    width: 50%;
+    background-color: rgb(255, 255, 255);
 }
