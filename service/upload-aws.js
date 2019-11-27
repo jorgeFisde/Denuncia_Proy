@@ -1,11 +1,12 @@
 const aws = require('aws-sdk')
 const multer = require('multer')
 const multerS3 = require('multer-s3')
+require('dotenv').config()
 
 aws.config.update({
-    secretAccessKey: '6phyuadVSMhgamyLYprfMWCo4ps6ECHYm5NaLoTI',
-    accessKeyId: 'AKIA2I4SDP5OGXXN7GWX',
-    region: 'us-west-1'
+    secretAccessKey: process.env.SECRET_K,
+    accessKeyId: process.env.ACCESS_K_ID,
+    region: process.env.REGION
 })
 
 const s3 = new aws.S3()
@@ -13,8 +14,8 @@ const s3 = new aws.S3()
 const upload = multer({
   storage: multerS3({
     s3: s3,
-    bucket: 'proyecto-denuncia',
-    acl: 'public-read',
+    bucket: process.env.BUCKET_NAME,
+    acl: process.env.ACL,
     metadata: function (req, file, cb) {
       cb(null, {fieldName: file.originalname});
     },

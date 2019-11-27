@@ -1,10 +1,9 @@
 //lat: -34.5956145, lng: -58.4431949
-// src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"
 const arregloCoord = []
 const arregloMapas = []
 const yaCargo = false
 
- 
+
 
 const div = document.getElementById('Most')
 
@@ -25,37 +24,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     div.innerHTML = ''
     resultado.reportes.forEach((element) => {
         div.innerHTML += `
-
-                    <div class="card" style="width: 18rem;">
-                    <img src="${element.fotoURL}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Reporte de ${element.nombreUsuario} ${element.apellidoUsuario}</h5>
-                            <p class="card-text">${element.DescripcionReporte}</p>
-                            <a href="#" class="btn btn-primary">visualizar</a>
-                        </div>
-                    </div>
-
-                
-                
-            
-            
+            <div class="card" style="width: 18rem;">
+            <img src="${element.fotoURL}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Reporte de ${element.nombreUsuario} ${element.apellidoUsuario}</h5>
+                    <p class="card-text">${element.DescripcionReporte}</p>
+                    <button class="btn btn-primary" id="boton${element.id}" >visualizar</button>
+                </div>
+            </div>
         `
-        
+        arregloCoord.push({ lat: parseFloat(element.latitud), lng: parseFloat(element.longitud) })
+        arregloMapas.push({
+            mapa: document.getElementById(`map${element.id}`)
+        })
+        //iniciarMap(parseFloat(element.latitud), parseFloat(element.longitud), element.id)
 
-                 arregloCoord.push({ lat: parseFloat(element.latitud), lng: parseFloat(element.longitud)})
-                 arregloMapas.push({
-                     mapa: document.getElementById(`map${element.id}`)
-                 })
-
-
-            //iniciarMap(parseFloat(element.latitud), parseFloat(element.longitud), element.id)
-            
 
     });
 
-    
-            const mapa = document.getElementById('mapa')   
-            
+
+    const mapa = document.getElementById('mapa')
+
 
 })
 
@@ -70,9 +59,9 @@ function iniciarMap() {
             map: map
         })
         console.log(map);
-        
-        
-        
+
+
+
 
     }
     console.log(arregloCoord);
@@ -85,8 +74,14 @@ function iniciarMap() {
     var marker = new google.maps.Marker({
         position: coord,
         map: map
-    });*/
-} 
+    });
+    
+    
+           
+
+    
+    */
+}
 
 
 
@@ -105,10 +100,10 @@ function iniciarMap() {
                         <div class="col-md-6">
                             <img src="${element.fotoURL}" alt="">
                         </div>
-                       
+
                             <div id="map${element.id}" class="map"></div>
-                            
-                       
+
+
                     </div>
                     <div class="rowForm">
                         <div class="col-md-12">
@@ -127,6 +122,6 @@ function iniciarMap() {
                     </div>
                 </div>
             </div>
-            
+
                     `
 */

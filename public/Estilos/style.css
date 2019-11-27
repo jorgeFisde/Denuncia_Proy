@@ -1,357 +1,150 @@
-/*-----------------------------------------------------------------------------------
-
-    Template Name: Your template name 
-    Template URI: http://bootexperts.com
-    Description: This is html5 template
-    Author: BootExperts
-    Author URI: http://bootexperts.com
-    Version: 1.0
-
------------------------------------------------------------------------------------
-    
-    CSS INDEX
-    ===================
-	
-    1. Theme Default CSS (body, link color, section etc)
-
------------------------------------------------------------------------------------*/
-
-/*----------------------------------------*/
-/*  1.  Theme default CSS
-/*----------------------------------------*/
-html, body {height: 100%; width: 100%; font-family: 'Roboto', sans-serif;font-weight:400;background:rgb(219, 226, 225);}
-.floatleft {float:left}
-.floatright {float:right}
-.alignleft {float:left;margin-right:15px;margin-bottom: 15px}
-.alignright {float:right;margin-left:15px;margin-bottom: 15px}
-.aligncenter {display:block;margin:0 auto 15px}
-a:focus {outline:0px solid}
-img {max-width:100%;height:auto}
-.fix {overflow:hidden}
-p {margin:0 0 15px;}
-h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 10px;
-  font-weight:700;
-}
-a {transition: all 0.3s ease 0s;text-decoration:none;}
-a:hover{
-  color: #ec4445;
-  text-decoration: none;
-}
-.mapouter {
-    position: relative;
-    text-align: right;
-
-}
-
-.gmap_canvas {
-    overflow: hidden;
-    background: none !important;
-
-}
-a:visited, a:link, a:active {
-  text-decoration: none;
-}
-a:active, a:hover {
-  outline: 0 none;
-}
-ul{
-list-style: outside none none;
-margin: 0;
-padding: 0
-}
-
-
-/*----------------------------------------*/
-/*  8. Menu collapse Area
-/*----------------------------------------*/
-.all-content-wrapper {
-    margin-left: 205px;
-    transition: all 0.3s;
-}
-.left-sidebar-pro {
-    z-index: 9999;
-    width: 240px;
-}
-#sidebar {
-    min-width: 205px;
-    background: #1b2a47;
-    color: #fff;
-	position:fixed;
-    transition: all 0.3s;
-	z-index:999;
-	height:100%;
-}
-.mini-navbar .all-content-wrapper {
-    margin-left: 80px;
-    transition: all 0.3s;
-}
-#sidebar.active {
-    left: -205px;
-    min-width: 80px;
-    max-width: 80px;
-    text-align: center;
-}
-#sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
-    display:none;
-}
-
-#sidebar.active .sidebar-header strong {
-    display: block;
-}
-
-#sidebar.active ul li .sidebar-right-icon {
-    display:none;
-}
-
-#sidebar .sidebar-header {
-    padding: 1px 0px;
-    height: 45px;
-    z-index: 99999;
-    background: #1b2a47;
-}
-
-.nalika-profile {
-    padding: 20px;
-	position: relative;
-    z-index: 99999;
-    background: #1b2a47;
-}
-.profile-dtl {
-    text-align: center;
-}
-.profile-dtl img {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    border: 2px solid #152036;
-}
-.profile-dtl h2{
-	font-size:16px;
-	color:#fff;
-	font-weight:400;
-	margin: 10px 0px 15px 0px;
-}
-.sidebar-header {
-
-}
-.sidebar-header h4 {
-    font-size: 20px;
-    color: #fff;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-#sidebar.active .sidebar-header .main-logo{
-	display:none;
-}
-#sidebar.active
-#sidebar.active .sidebar-header h3{
-	display:none;
-}
-#sidebar.active .sidebar-header p{
-	display:none;
-}
-#sidebar ul li a .sidebar-right-icon{
-	float: right;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro{
-	width:100%;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li{
-	display:block;
-	float:none;
-	position:relative;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li .left-menu-dropdown{
-	left:0px;
-	top:0px;
-	opacity:0;
-	border-radius:0;
-	border:0px solid #fff;
-	box-shadow:none;
-	background:#ebebeb;
-}
-.left-custom-menu-adp-wrap .dropdown-menu{
-	position: relative;
-	float: none;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li .left-menu-dropdown a:hover{
-	padding:15px 30px;
-	transition:all .4s ease 0s;
-	background:#fff;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li.open .left-menu-dropdown{
-	opacity:1;
-	left: 0px;
-	z-index:9999;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li.open .left-menu-dropdown.chart-left-menu-std{
-	top:0px;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li.open .left-menu-dropdown.form-left-menu-std{
-	top: 0px;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li.open .left-menu-dropdown.apps-left-menu-std{
-	top: 0px;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li.open .left-menu-dropdown.pages-left-menu-std{
-	top: 0px;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a{
-	display: block;
-    padding: 15px 20px;
-    color: #444;
-    transition: all .4s ease 0s;
-    font-size: 16px;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:hover, .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:focus, .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:active, .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li a:visited{
-	background:#ebebeb;
-	color:#444;
-}
-.left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li .indicator-right-menu{
-	float: right;
-	font-size:12px;
-}
-#sidebar.active .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li.open .left-menu-dropdown {
-    left: 80px;
-}
-#sidebar.active .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li .mini-dn {
-    display:none;
-}
-#sidebar.active .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li .big-icon {
-    font-size:20px;
-}
-#sidebar.active .left-custom-menu-adp-wrap ul.left-sidebar-menu-pro li > a {
-    padding: 20px 20px;
-}
-.toggle-btn{
-    position: absolute;
-    padding: 5px;
-    color: #fff;
-    cursor: pointer;
-}
-
-.toggle-btn span{
-    display: block;
-    width: 30px;
-    font-size: 15px;
-    text-align: center;
-    border: 1.5px solid #fff;
-    border-radius: 5px;
-
-}
-
-.mini-navbar .menu-switcher-pro {
-    transition: all 0.3s;
-}
-.menu-switcher-pro button{
-	background: none;
-	border:none;
-}
-.menu-switcher-pro button:hover, .menu-switcher-pro button:focus, .menu-switcher-pro button:active, .menu-switcher-pro button:visited{
-	background: none;
-	border:none;
-}
-
-#footer{
-    text-align: center;
-    background-color: rgb(23, 75, 134);
-}
-
-/*----------------------------------------*/
-/*  8. Scroll Area
-/*----------------------------------------*/
-.comment-scrollbar, .timeline-scrollbar, .messages-scrollbar, .project-list-scrollbar {
-    height: 580px;
-}
-.mCSB_outside+.mCSB_scrollTools {
-    right: 0px;
-    margin: 0px 0px;
-}
-.admintab-wrap.menu-setting-wrap.menu-setting-wrap-bg .mCSB_outside+.mCSB_scrollTools {
-    right: -15px;
-}
-/*----------------------------------------*/
-/*  2.  Header top Customize CSS
-/*----------------------------------------*/
-.header-top-menu .navbar-nav>li>a{
-	padding: 20px 20px;
-	color: #fff;
-	font-size:14px;
-}
-
-
-.breadcome-heading .form-control{
-    border: 1px solid #152036;
-    font-size: 13px;
-    height: 40px;
-    color: #303030;
-
-    padding-left: 20px;
-    padding-right: 40px;
-    background: #152036;
-    box-shadow: none;
-    border-radius: 30px;
-    width: 200px;
-	transition:all .4s ease 0s;
-}
-
-
-.header-advance-area {
-    position: fixed;
-    background: #1b2a47;
-    z-index: 99;
-    left: 200px;
+.navbar{
+    height: 50px;
     right: 0;
     top: 0;
-    margin: 0 auto;
-    transition: all 0.3s;
-}
-
-.panel{
-    margin-top: 50px;
-    padding: 5px;
-}
-
-.rowForm .btn{
-    margin-left: 200px;
-    display: block;
-    width: 200px;
-    background-color: rgb(42, 42, 177);
-}
-.rowForm{
-    text-align: center;
-}
-
-.rowForm .comentario{
-    width: 600px;
-    height: 100px;
-}
-.card{
-    margin-top: 50px;
-    margin-left: 10px;
-    margin-bottom: 30px;
-    background-color: white;
-    padding: 10px;
-    display: inline-block ;
-    
-}
-.row-report{
-    text-align: center;
-    height: 50%;
-    width: 50%;
-    background-color: rgb(255, 255, 255);
-}
-
-#panel{
-    height: 700px;
+    left: 200px;
+    position: fixed;
     background-color: red;
-}
-#rows{
-    
+    transition-duration: 1s;
 
 }
-#panel1{
-    height: 700px;
+
+.logout{
+    position: absolute;
+    right: 3px;
+    bottom: 10px;
+    width: 5%;
+    height: 50%;
+    background-color: teal;
+}
+
+.container-fluid{
+    margin-top: 50px;
+    margin-left: 200px;
+    transition-duration: 1s;
+
+}
+.panel1{
+    background-color: orange;
+    width: 59%;
+    height: 70%;
+    display: inline-block;
+
+}
+
+.panel2{
     background-color: green;
+    width: 40%;
+    height: 70%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.cubo-titulo{
+    background-color: grey;
+    margin-top: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.visualizador{
+    margin: 10%;
+    background-color: lavender;
+    height: 720px;
+    border-radius: 20px;
+}
+
+.reportes{
+    margin: 10%;
+    margin-top: 2%;
+    background-color: lavender;
+    height: 720px;
+    border-radius: 10px;
+}
+
+
+.sidebar{
+    background-color: blue;
+    width: 200px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    transition-duration: 1s;
+
+}
+
+.titulo{
+    color: white;
+    text-align: center;
+    font-size: 20px;    
+}
+
+
+.contenido{
+    margin-top: 60px;
+    background-color: hotpink;
+    width: 200px;
+    height: 200px ;
+    transition-duration: 1s;
+
+    
+}
+
+.foto{
+    position: absolute;
+    margin: 25%;
+    background-color: greenyellow;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transition-duration: 1s;
+
+}
+
+.admin{
+    position: relative;
+    top: 75%;
+    color: white;
+    text-align: center;
+    font-size: 30px; 
+}
+
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 200px;
+    width: 100%;
+    height: 1.5rem; 
+    background-color: indigo;
+    transition-duration: 1s;
+
+}
+
+@media (max-width: 700px){
+    .sidebar{
+        left: -200px;
+        transition-duration: 1s;
+    }
+    .foto{
+        margin-left: -200px;
+        transition-duration: 1s;
+    }
+    .contenido{
+        left: -200px;
+        transition-duration: 1s;
+    }
+    .container-fluid{
+        margin-left: 0;
+        transition-duration: 1s;
+    }
+    .footer,
+    .navbar{
+        left:0;
+        transition-duration: 1s;
+    }
 }
