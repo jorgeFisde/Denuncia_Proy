@@ -328,16 +328,7 @@ padding: 0
     width: 600px;
     height: 100px;
 }
-.card{
-    margin-top: 50px;
-    margin-left: 10px;
-    margin-bottom: 30px;
-    background-color: white;
-    padding: 10px;
-    display: inline-block ;
-    vertical-align: top;
-    border-radius: 5px;
-}
+
 .row-report{
     text-align: center;
     height: 50%;

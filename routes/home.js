@@ -2,14 +2,13 @@ const router = require('express').Router()
 const jwt = require('jsonwebtoken')
 const DB_conection = require('../service/database')
 const login = require('../routes/login')
-
 router.get('/home', (req, res) => {
     //renderizar home
     res.render('index.html')
 })
 
 
-router.get('/api/home', login.verifyToken,(req, res) => {
+router.get('/api/home', login.verifyToken, (req, res) => {
     sql = `
     SELECT * FROM MisReportes WHERE idUsuario = ?
     `
@@ -29,7 +28,7 @@ router.get('/api/home', login.verifyToken,(req, res) => {
                     res.json(data.user.misReportes) 
                 }
             })*/
-            res.json(data.user) 
+            res.json(data.user)
         }
     })
 })
