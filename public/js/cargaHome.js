@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             for (let index = 0; index < modelo.length; index++) {
                 const element = modelo[index];
                 if (element.id == item.id) {
+
                     view.innerHTML = `
                     <div class="cabezaPanel">
                         <h4 class="tituloReporte"> ${element.Descripcion}</h4>
@@ -93,23 +94,25 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
               
                     `
-                    iniciarMap(parseFloat(element.lat),parseFloat(element.lon))
-                    var mapa = document.getElementById('mapa')
-                    
+                    iniciarMap(parseFloat(element.lat), parseFloat(element.lon))
+
+
                 }
 
             }
+            //var mapa = document.getElementById('mapa')
+            
         })
 
     })
 
-
+    //<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14569.553640298735!2d -110.29513645 !3d 24.0878327 00000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1574910360789!5m2!1ses-419!2smx"  allowfullscreen=""
 })
 
-function iniciarMap(lat,lon) {
+function iniciarMap(lat, lon) {
     var coord = { lat: lat, lng: lon };
-    var map = new google.maps.Map(document.getElementById(`map`), {
-        zoom: 30,
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
         center: coord
     });
     var marker = new google.maps.Marker({
@@ -119,8 +122,8 @@ function iniciarMap(lat,lon) {
 }
 
 /*
-    
-    
+
+
     function iniciarMap() {
     for (let index = 0; index < arregloCoord.length; index++) {
         var map = new google.maps.Map((arregloMapas[index].mapa), {
@@ -136,9 +139,9 @@ function iniciarMap(lat,lon) {
     }
     console.log(arregloCoord);
     console.log(arregloMapas);
-           
 
-    
+
+
     */
 
 
