@@ -47,6 +47,32 @@ router.get('/api/home', login.verifyToken, (req, res) => {
     })
 })
 
+router.get('/api/miCuenta', login.verifyToken, (req, res) => {
+    sql = `
+    SELECT * FROM Reporte WHERE id_Usuario = ?
+    `
+    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+        if (err) {
+            res.send('Hubo un error al cargar el inicio')
+            console.log('token invalido')
+
+        } else {
+            DB_conection.query(sql, [data.user.id], (err, result) => {
+                if (err) {
+                    res.send('hubo un error al acceder')
+                    console.log('**Error: ' + err);
+                    
+                } else {
+                    data.user.misReportes = result
+                    res.json(data.user) 
+                    console.log( data.user);
+                    
+                }
+            })
+        }
+    })
+})
+
 router.get('/api/home/obtenerCat', (req, res) => {
     var sql = `
         SELECT id,nombre FROM Categoria
