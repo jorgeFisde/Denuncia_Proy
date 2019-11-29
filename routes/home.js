@@ -11,6 +11,15 @@ router.get('/home', (req, res) => {
     res.sendStatus(500)*/
 })
 
+router.get('/map', (req, res) => {
+    //renderizar home
+    res.render('map.html')
+    /*if (req.session.user != undefined) {
+        res.render('index.html')
+    }
+    res.sendStatus(500)*/
+})
+
 
 router.get('/api/home', login.verifyToken, (req, res) => {
     sql = `
@@ -30,6 +39,8 @@ router.get('/api/home', login.verifyToken, (req, res) => {
                 } else {
                     data.user.misReportes = result
                     res.json(data.user) 
+                    console.log( data.user);
+                    
                 }
             })
         }
