@@ -1,5 +1,5 @@
 //lat: -34.5956145, lng: -58.4431949
-import Coordenadas from './classCoord.js'
+//import Coordenadas from './classCoord.js'
 const arregloCoord = []
 const arregloMapas = []
 const modelo = []
@@ -14,6 +14,19 @@ function iniciarMap(lat, lon) {
         position: coord,
         map: map
     });
+}
+
+class Coordenadas {
+    constructor(lat,lon){
+        this.lat = lat
+        this.lon = lon
+    }
+    getLat(){
+        return this.lat
+    }
+    getLon(){
+        return this.lon
+    }
 }
 
 
@@ -111,8 +124,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                     var ubicacion = document.getElementById('ubicacion')
                     ubicacion.addEventListener('click', ()=>{
-                        const cord = new Coordenadas(parseFloat(element.lat), parseFloat(element.lon))
-
+                        export const cord = new Coordenadas(parseFloat(element.lat), parseFloat(element.lon))
+                        //maps(parseFloat(element.lat), parseFloat(element.lon))
                         window.location.replace('http://localhost:3000/map')
                         //iniciarMap(parseFloat(element.lat), parseFloat(element.lon))
                         

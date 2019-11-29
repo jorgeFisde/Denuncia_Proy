@@ -1,4 +1,4 @@
-import Coordenadas from './classCoord'
+import {Coordenadas} from './cargaHome.js'
 function iniciarMap(lat, lon) {
     var coord = { lat: lat, lng: lon };
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -12,7 +12,8 @@ function iniciarMap(lat, lon) {
 }
 
 document.addEventListener('DOMContentLoaded', ()=> {
-    iniciarMap(Coordenadas.getLat(),Coordenadas.getLat())
+    console.log(  );
+    
 })
 
 
