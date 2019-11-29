@@ -39,7 +39,7 @@ router.post('/api/crear_reporte', verificar, subirImg.single('foto'), (req, res)
     var sql = `
         CALL crear_Reporte(?,?,?,?,?,?)    
     `
-    jwt.verify(req.token, 'my-secret-key', (err, data) => {
+    jwt.verify(req.token, 'my_secret_key', (err, data) => {
         DB_conection.query(sql, [emp.Descripcion, emp.Categoria, req.file.location, emp.lat, emp.lon, data.user.id], (err, rows) => {
             if (err) {
                 res.send('Hubo un error al crear el reporte')
@@ -64,7 +64,7 @@ router.post('/api/crear_respuesta', (req, res) => {
     var sql = `
         CALL crear_Respuesta_Administrador(?,?,?,?)
     `
-    jwt.verify(req.token, 'my-secret-key', (err, data) => {
+    jwt.verify(req.token, 'my_secret_key', (err, data) => {
         DB_conection.query(sql, [emp.respuesta,emp.idEstdo,emp.myID,emp.idRep], (err, rows) => {
             if (err) {
                 res.send('Hubo un error al crear el reporte')
