@@ -20,8 +20,6 @@ body{
     margin-top: 50px;
 }
 
-.content form .btn{
-    background-color: rgb(53, 50, 255);
-    font-size: 15px;
-    width: 300px;
+.btn{
+    width: 50%;
 }

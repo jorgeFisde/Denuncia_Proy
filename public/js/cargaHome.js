@@ -79,32 +79,98 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="map" id="map">
                                 
                         </div>
-                        <form class="form" id= '${element.id}'>
+                        <form class="form" name="form" id='formulario${element.id}'>
                             <div class="form-group">
-                                <textarea class= 'comentario' id= 'comentario${element.id}' placeholder= 'Escribe un comentario' ></textarea>
+                                <textarea class= 'comentario' id= 'comentario' placeholder= 'Escribe un comentario' name="coment" ></textarea>
                             </div>
                             <div class="checkbox">
-                                <label><input type="checkbox">En proceso</label>
-                                <label><input type="checkbox">Aceptado</label>
-                                <label><input type="checkbox">Rechazado</label>
+                                <label><input type="checkbox" id="Pendiente">Pendiente</label>
+                                <label><input type="checkbox" id="Proceso">En proceso</label>
+                                <label><input type="checkbox" id="Resuelto">Resuelto</label>
                             </div>
-                            <button type="submit" class="btn btn-block">Atender Reporte</button>
+                            <button type="submit" class="btn btn-primary">Atender Reporte</button>
                         </form>
                         
                     </div>
               
                     `
-                    iniciarMap(parseFloat(element.lat), parseFloat(element.lon))
+                    //iniciarMap(parseFloat(element.lat), parseFloat(element.lon))
+                    const formularios = document.getElementById(`formulario${element.id}`)
+                    var checkPendiente = document.querySelector('#Pendiente')
+                    var checkProceso = document.querySelector('#Proceso')
+                    var checkResuelto = document.querySelector('#Resuelto')
+                    function check() {
+
+                        checkPendiente.addEventListener('click', () => {
+                            checkProceso.checked = false
+                            checkResuelto.checked = false
+                            return 1
+                        })
+                        checkProceso.addEventListener('click', () => {
+                            checkPendiente.checked = false
+                            checkResuelto.checked = false
+                            return 2
+                        })
+                        checkResuelto.addEventListener('click', () => {
+                            checkPendiente.checked = false
+                            checkProceso.checked = false
+                            return 3
+                        })
+
+                    }
+                    var box
+                    function checked() {
+                        if (checkPendiente.checked == true) {
+                            box = 1
+                        }
+                        if (checkProceso.checked == true) {
+                            box = 2
+                        }
+                        if (checkResuelto.checked == true) {
+                            box = 3
+                        }
+                    }
+                    check()
+                    formularios.addEventListener('submit', async (e) => {
+                        e.preventDefault()
+                        checked()
+                        const form = new FormData(formularios)
+                        console.log(form.get(`coment`) + box );
+                        var body = {
+                            respuesta: form.get('coment'),
+                            idEstado: box,
+                            myID: resultado.mySession.id,
+                            idRep: element.id
+                        }
+                        var opt = {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(body)
+                    
+                        }
+                        var myReq = new Request('http://localhost:3000/api/crear_respuesta', opt)
+                        var resp = await fetch(myReq)
+                        var result = await resp.text()
+
+                        alert(result)
+        
+
+                    })
 
 
                 }
 
             }
+
             //var mapa = document.getElementById('mapa')
-            
+
         })
 
     })
+
+
 
     //<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14569.553640298735!2d -110.29513645 !3d 24.0878327 00000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1574910360789!5m2!1ses-419!2smx"  allowfullscreen=""
 })

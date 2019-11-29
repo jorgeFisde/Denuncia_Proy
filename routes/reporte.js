@@ -13,10 +13,6 @@ const fileFilter = (req, file, cb) => {
     }
 }
 
-router.get('/reportes', (req, res) => {
-    // Renderizar template (opcional)
-})
-
 router.get('/api/ver_reportes', (req, res) => {
     var sql = `
     SELECT * FROM Reportes WHERE idEstado = 1
@@ -28,7 +24,8 @@ router.get('/api/ver_reportes', (req, res) => {
 
         } else {
             res.json({
-                reportes: rows
+                reportes: rows,
+                mySession: req.session.user
             })
             console.log(rows);
 
@@ -37,28 +34,49 @@ router.get('/api/ver_reportes', (req, res) => {
 })
 
 
-    router.post('/api/crear_reporte', verificar ,subirImg.single('foto'), (req, res) => {
-        var emp = req.body
-        var sql = `
-    CALL crear_Reporte(?,?,?,?,?,?)    
+router.post('/api/crear_reporte', verificar, subirImg.single('foto'), (req, res) => {
+    var emp = req.body
+    var sql = `
+        CALL crear_Reporte(?,?,?,?,?,?)    
     `
-        jwt.verify(req.token,'my-secret-key',(err,data)=>{
-            DB_conection.query(sql, [emp.Descripcion, emp.Categoria, req.file.location, emp.lat, emp.lon, data.user.id], (err, rows) => {
-                if (err) {
-                    res.send('Hubo un error al crear el reporte')
-                    console.log('*** ERROR: ', err);
-    
-                } else {
-                    res.send('Reporte enviado!')
-                    console.log('Reporte creado!');
-    
-                }
-            })
-    
+    jwt.verify(req.token, 'my-secret-key', (err, data) => {
+        DB_conection.query(sql, [emp.Descripcion, emp.Categoria, req.file.location, emp.lat, emp.lon, data.user.id], (err, rows) => {
+            if (err) {
+                res.send('Hubo un error al crear el reporte')
+                console.log('*** ERROR: ', err);
+
+            } else {
+                res.send('Reporte enviado!')
+                console.log('Reporte creado!');
+
+            }
         })
+
+    })
 
     /*  */
 
+})
+
+
+router.post('/api/crear_respuesta', (req, res) => {
+    var emp = req.body
+    var sql = `
+        CALL crear_Respuesta_Administrador(?,?,?,?)
+    `
+    jwt.verify(req.token, 'my-secret-key', (err, data) => {
+        DB_conection.query(sql, [emp.respuesta,emp.idEstdo,emp.myID,emp.idRep], (err, rows) => {
+            if (err) {
+                res.send('Hubo un error al crear el reporte')
+                console.log('*** ERROR: ', err);
+
+            } else {
+                res.send('Reporte enviado!')
+                console.log('Reporte creado!');
+
+            }
+        })
+    })
 })
 
 

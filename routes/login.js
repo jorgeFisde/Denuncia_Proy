@@ -64,13 +64,7 @@ router.post('/api/web_login', (req, res) => {
                     if (user.es_Administrador == false) {
                         res.send('Usuario no admin')
                     } else {
-                        jwt.sign({ user }, 'my_secret_key', { expiresIn: '1h' }, (err, token) => {
-                            localStorage = new LocalStorage('./scratch');
-
-                            localStorage.setItem('AccessToken: '+ token);
-                            console.log(localStorage.getItem('AccessToken'))
-                            
-                        })
+                        req.session.user = user
                         res.send('Okay!')
                     }
                 }

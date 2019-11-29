@@ -1,31 +1,34 @@
 .navbar{
-    height: 50px;
+    height: 5%;
     right: 0;
     top: 0;
     left: 200px;
     position: fixed;
-    background-color: red;
+    background-color: #476780;
     transition-duration: 1s;
 
 }
 
-.logout{
-    position: absolute;
-    right: 3px;
-    bottom: 10px;
-    width: 5%;
-    height: 50%;
-    background-color: teal;
+body{
+    background-color: #DBF0FF;
+    font-family: 'Roboto', sans-serif;
 }
 
+#logout{
+    margin-top: 1%;
+    margin-left: 94%;
+}
+
+
 .container-fluid{
+    background-color: #DBF0FF;
     margin-top: 50px;
     margin-left: 200px;
     transition-duration: 1s;
 
 }
 .panel1{
-    background-color: orange;
+    background-color: #DBF0FF;
     width: 59%;
     height: 70%;
     display: inline-block;
@@ -34,7 +37,7 @@
 
 .panel2{
     position: fixed;
-    background-color: green;
+    background-color: #DBF0FF;
     width: 36%;
     height: 90%;
     display: inline-block;
@@ -42,27 +45,34 @@
 }
 
 .cubo-titulo{
-    background-color: grey;
+    background-color: #72A5CC;
     margin-top: 2%;
     margin-left: 10%;
     margin-right: 10%;
     height: 60px;
     border-radius: 10px;
+    text-align: center;
+}
+
+.superTitle{
+    padding: 1%;
+    font-size: 40px;
+    color: #fff;
 }
 
 .visualizador{
     
     margin: 10%;
     padding: 1%;
-    background-color: lavender;
-    height: 85%;
+    background-color: #8FCEFF;
+    height: 89%;
     border-radius: 20px;
 }
 
 .cabezaPanel{
     text-align: center;
     top: 5%;
-    margin: 5%;
+    margin: 2%;
     height: 5%;
     background-color: white;
     border-radius: 10px;
@@ -71,14 +81,15 @@
 
 .contenidoView{
     top: 5%;
-    margin: 5%;
-    height: 79%;
+    margin: 2%;
+    height: 80%;
     background-color: white;
     border-radius: 10px;
     transition-duration: 1s;
 }
 
 .tituloReporte{
+    padding: 2%;
     transition-duration: 1s;
 
 }
@@ -86,7 +97,7 @@
 .info{
     padding: 10px;
     margin: 5%;
-    height: 20%;
+    height: 15%;
 }
 
 .info p{
@@ -94,9 +105,8 @@
 }
 
 .fotoP{
-    background-color: yellow;
     width: 45%;
-    margin: 5%;
+    margin-left: 2%;
     display: inline-block;
 }
 
@@ -108,6 +118,7 @@
 }
 
 .form{
+    margin-top: 1%;
     text-align: center;
 }
 
@@ -126,23 +137,24 @@
     text-align: center;
     margin: 10%;
     margin-top: 2%;
-    background-color: lavender;
+    background-color: #8FCEFF;
     height: 60%;
     border-radius: 10px;
     padding: 1%;
 }
 .card{
     padding: 1%;
-    background-color: white;
+    margin: 1%;
+    background-color: #6E7880;
     display: inline-block ;
     vertical-align: top;
     border-radius: 5px;
     max-width: 15rem;
 }
 
-.btn{
-    margin-left: 35%;
-    margin-right: 35%;
+.card-title,
+.card-text{
+    color: #fff;
 }
 
 .card-img-top{
@@ -150,7 +162,7 @@
 }
 
 .sidebar{
-    background-color: blue;
+    background-color: #476780;
     width: 200px;
     height: 100%;
     top: 0;
@@ -169,7 +181,7 @@
 
 .contenido{
     margin-top: 60px;
-    background-color: hotpink;
+    background-color: #476780;
     width: 200px;
     height: 200px ;
     transition-duration: 1s;
@@ -202,13 +214,16 @@
     right: 0;
     left: 200px;
     width: 100%;
-    height: 1.6rem; 
-    background-color: indigo;
+    height: 5%; 
+    background-color: #476780;
     transition-duration: 1s;
-
+    text-align: center;
+}
+.footer h4{
+    color: #fff;
 }
 
-@media (max-width: 700px){
+@media (max-width: 1000px){
     .sidebar{
         left: -200px;
         transition-duration: 1s;

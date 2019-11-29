@@ -2,9 +2,13 @@ const router = require('express').Router()
 const jwt = require('jsonwebtoken')
 const DB_conection = require('../service/database')
 const login = require('../routes/login')
-router.get('/home', (req, res) => {
+router.get('/home',(req, res) => {
     //renderizar home
     res.render('index.html')
+    /*if (req.session.user != undefined) {
+        res.render('index.html')
+    }
+    res.sendStatus(500)*/
 })
 
 

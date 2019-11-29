@@ -6,22 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="Estilos/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Estilos/style.css">
 </head>
 
 <body>
     <div class="headers">
         <div class="navbar">
-            hola
-            <div class="logout">
-
-            </div>
+            
+            <button class="btn btn-primary btn-sm" id="logout">
+                Logout
+            </button>
         </div>
         <div class="container-fluid">
 
             <div class="panel1">
                 <div class="cubo-titulo">
-
+                    <h4 class="superTitle">Reportes</h4>
                 </div>
                 <div class="reportes" id="reportes">
 
@@ -33,7 +35,7 @@
                 </div>
             </div>
             <footer class="footer">
-              
+              <h4>Derechos reservados compyright@jorgeFischer</h4>
             </footer>
         </div>
 
@@ -52,6 +54,7 @@
 </body>
 <script src="js/cargaHome.js"></script>
 <script id="mapa" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap'></script>
+<script src="js/logout.js"></script>
 
 
 </html>

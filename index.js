@@ -1,13 +1,20 @@
 const path = require('path')
 const express = require('express')
+const session = require('express-session')
 const app = express()
 
 //Settings
 app.set('views', path.join(__dirname + '/views'))
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: false,
+    cookie: {
+        maxAge: 6000000
+    }
+}));
 //archivos publicos para que sean visibles en la app y servidor
 app.use(express.static(path.join(__dirname + '/public')))
 
