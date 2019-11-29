@@ -76,6 +76,8 @@ router.post('/api/web_login', (req, res) => {
 })
 
 
+
+
 function verifyToken(req, res, next) {
     // cabezera del portador que se envia al verificar token
     const bearerHeader = req.headers['authorization']
