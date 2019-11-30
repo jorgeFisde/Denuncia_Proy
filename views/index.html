@@ -8,13 +8,16 @@
     <title>Document</title>
     <link rel="stylesheet" href="Estilos/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="Estilos/style.css">
+    <link rel="stylesheet" href="Estilos/normalize.css">
+    <link rel="stylesheet" href="Estilos/responsive.css">
 </head>
 
 <body>
     <div class="headers">
         <div class="navbar">
-            
+
             <button class="btn btn-primary btn-sm" id="logout">
                 Logout
             </button>
@@ -31,11 +34,14 @@
             </div>
             <div class="panel2">
                 <div class="visualizador" id="viewer">
-                    
+                    <div class="view">
+                        <h5> Visualizador </h5>
+                    </div>
                 </div>
             </div>
+
             <footer class="footer">
-              <h4>Derechos reservados compyright@jorgeFischer</h4>
+                <h4>Derechos reservados copyright@jorgeFischer</h4>
             </footer>
         </div>
 
@@ -49,12 +55,20 @@
             <h1 class="admin">admin</h1>
         </div>
 
-    </div>
-    
-</body>
-<script src="js/cargaHome.js" type="module"></script>
+        <div class="lista">
+            <a class="w3-bar-item w3-button" style="width: 100%; text-align: left;"><p>Repostes</p></a>
+            <a id="mios" class="w3-bar-item w3-button" style="width: 100%; text-align: left;"><p>Atendidos por mi</p></a>
+            <a class="w3-bar-item w3-button" style="width: 100%; text-align: left;">Link 3</a>
+        </div>
 
+
+    </div>
+
+</body>
+<script src="js/cargaHome.js"></script>
+<script src="js/atendidos.js"></script>
 <script src="js/logout.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik"></script>
 
 
 </html>

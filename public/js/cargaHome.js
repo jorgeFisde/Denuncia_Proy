@@ -4,31 +4,6 @@ const arregloCoord = []
 const arregloMapas = []
 const modelo = []
 
-function iniciarMap(lat, lon) {
-    var coord = { lat: lat, lng: lon };
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        center: coord
-    });
-    var marker = new google.maps.Marker({
-        position: coord,
-        map: map
-    });
-}
-
-class Coordenadas {
-    constructor(lat,lon){
-        this.lat = lat
-        this.lon = lon
-    }
-    getLat(){
-        return this.lat
-    }
-    getLon(){
-        return this.lon
-    }
-}
-
 
 
 const div = document.getElementById('reportes')
@@ -91,16 +66,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                     view.innerHTML = `
                     <div class="cabezaPanel">
-                        <h4 class="tituloReporte"> ${element.Descripcion}</h4>
+                        <h4 class="tituloReporte"> ${element.nombre} ${element.apellido}</h4>
                     </div>
                     <div class="contenidoView">
                         <div class="info">
-                            <p>${element.Descripcion}</p>
-                            <p>Estado: ${element.estado}</p>
-                            <p>Descripcion del estado: ${element.estadoDes}</p>
-                            
+                            <p> <STRONG>Descripcion:</STRONG> ${element.Descripcion}</p>
+                            <p> <STRONG>Estado:</STRONG> ${element.estado}</p>
+                            <p> <STRONG>Descripcion del estado:</STRONG> ${element.estadoDes}</p>
+                            <p> <STRONG>Categoria:</STRONG> ${element.categoria}</p>
                         </div>
-                        <img  src="${element.fotoURL}" class="fotoP">
+                        <div class="multimedia">
+                            <img  src="${element.fotoURL}" class="fotoP">
+                            <div class="map" id="map">
+
+                            </div>
+                        </div>
+                        
                         <form class="form" name="form" id='formulario${element.id}'>
                             <div class="form-group">
                                 <textarea class= 'comentario' id= 'comentario' placeholder= 'Escribe un comentario' name="coment" ></textarea>
@@ -110,9 +91,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <label><input type="checkbox" id="Proceso">En proceso</label>
                                 <label><input type="checkbox" id="Resuelto">Resuelto</label>
                             </div>
-                            <button type="submit" class="btn btn-primary">Atender Reporte</button>
+                            <button type="submit" id="responder" class="btn btn-primary">Atender Reporte</button>
                         </form>
-                            <button id="ubicacion" class="btn btn-primary">Ubicacion</button>      
                         </div>
                         
                         
@@ -120,17 +100,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
               
                     `
-                    
+                    // CARGAR MAPA EN CADA PANEL
+                    var mapa = document.getElementById('map')
+                    mapa.onload = iniciarMap(parseFloat(element.lat), parseFloat(element.lon))
 
-                    var ubicacion = document.getElementById('ubicacion')
-                    ubicacion.addEventListener('click', ()=>{
-                        export const cord = new Coordenadas(parseFloat(element.lat), parseFloat(element.lon))
-                        //maps(parseFloat(element.lat), parseFloat(element.lon))
-                        window.location.replace('http://localhost:3000/map')
-                        //iniciarMap(parseFloat(element.lat), parseFloat(element.lon))
-                        
-                    })
-
+                    // ACCION PARA RESPONDER REPORTES
                     const formularios = document.getElementById(`formulario${element.id}`)
                     var checkPendiente = document.querySelector('#Pendiente')
                     var checkProceso = document.querySelector('#Proceso')
@@ -171,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         e.preventDefault()
                         checked()
                         const form = new FormData(formularios)
-                        console.log(form.get(`coment`) + box );
+                        console.log(form.get(`coment`) + box);
                         var body = {
                             respuesta: form.get('coment'),
                             idEstado: box,
@@ -184,14 +158,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify(body)
-                    
+
                         }
                         var myReq = new Request('http://localhost:3000/api/crear_respuesta', opt)
                         var resp = await fetch(myReq)
                         var result = await resp.text()
 
                         alert(result)
-        
+
 
                     })
 
@@ -211,6 +185,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     //<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14569.553640298735!2d -110.29513645 !3d 24.0878327 00000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1574910360789!5m2!1ses-419!2smx"  allowfullscreen=""
 })
 
+function iniciarMap(lat,lon) {
+    var coord = { lat: lat, lng: lon };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: coord
+    });
+    var marker = new google.maps.Marker({
+        position: coord,
+        map: map
+    });
+}
 
 
 /*

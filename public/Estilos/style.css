@@ -39,7 +39,7 @@ body{
     position: fixed;
     background-color: #DBF0FF;
     width: 36%;
-    height: 90%;
+    height: 89%;
     display: inline-block;
     vertical-align: top;
 }
@@ -61,12 +61,22 @@ body{
 }
 
 .visualizador{
-    
-    margin: 10%;
+    margin: 5%;
     padding: 1%;
     background-color: #8FCEFF;
-    height: 89%;
     border-radius: 20px;
+}
+
+.view{
+    background-color: #fff;
+    margin: 1%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.view h5{
+    color: black;
+    font-size: xx-large;
 }
 
 .cabezaPanel{
@@ -80,12 +90,14 @@ body{
 }
 
 .contenidoView{
-    top: 5%;
     margin: 2%;
-    height: 70%;
     background-color: white;
     border-radius: 10px;
     transition-duration: 1s;
+}
+
+.multimedia{
+    margin: 5%;
 }
 
 .tituloReporte{
@@ -95,25 +107,31 @@ body{
 }
 
 .info{
-    padding: 10px;
+    padding: 1px;
     margin: 5%;
-    height: 15%;
 }
 
 .info p{
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .fotoP{
-    width: 45%;
-    margin-top: 5%;
-    margin-left: 2%;
+    width: 49%;
     display: inline-block;
+    vertical-align: top;
+
+}
+.map{
+    width: 50%;
+    height: 200px;
+    display: inline-block;
+    vertical-align: top;
+
 }
 
 
 .form{
-    margin-top: 10%;
+    margin: 1%;
     text-align: center;
 }
 
@@ -121,6 +139,10 @@ body{
     margin-right: 5%;
     margin-left: 5%;
     width: 70%;
+}
+
+.form #responder{
+    margin: 2%;
 }
 
 .fotoPanel{
@@ -165,6 +187,18 @@ body{
     position: fixed;
     transition-duration: 1s;
 
+}
+
+.lista{
+    background-color: #6A828A;
+}
+
+.lista p{
+    color: #fff;
+    font-size: large;
+}
+.lista a{
+    color: #fff;
 }
 
 .titulo{
