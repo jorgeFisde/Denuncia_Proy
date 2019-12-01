@@ -27,7 +27,7 @@ formulario.addEventListener('submit',(e)=>{
             
         } else {
             //console.log('token ' + window.localStorage.getItem('AccessToken'));
-            window.location.replace('http://localhost:3000/home')
+            window.location.replace('/home')
             
             
             
