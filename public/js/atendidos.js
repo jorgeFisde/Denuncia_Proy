@@ -31,9 +31,11 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             descripcion: element.descripcion,
             fotoURL: element.fotoURL,
             id: element.id,
+            idReporte: element.idReporte,
             id_admin: element.id_admin,
             latitud: element.latitud,
             longitud: element.longitud,
+            categoria: element.categoria,
             nombre: element.nombre,
             respuesta: element.respuesta
         })
