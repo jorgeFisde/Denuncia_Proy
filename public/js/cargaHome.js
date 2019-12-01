@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
     }
-    var myRequest = new Request('http://localhost:3000/api/ver_reportes', options)
+    var myRequest = new Request('/api/ver_reportes', options)
     var request = await fetch(myRequest)
     var resultado = await request.json()
     console.log(resultado);
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             body: JSON.stringify(body)
 
                         }
-                        var myReq = new Request('http://localhost:3000/api/crear_respuesta', opt)
+                        var myReq = new Request('/api/crear_respuesta', opt)
                         var resp = await fetch(myReq)
                         var result = await resp.text()
 

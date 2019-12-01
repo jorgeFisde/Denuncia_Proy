@@ -64,8 +64,7 @@ router.post('/api/crear_respuesta', (req, res) => {
     var sql = `
         CALL crear_Respuesta_Administrador(?,?,?,?)
     `
-    jwt.verify(req.token, 'my_secret_key', (err, data) => {
-        DB_conection.query(sql, [emp.respuesta,emp.idEstdo,emp.myID,emp.idRep], (err, rows) => {
+        DB_conection.query(sql, [emp.respuesta,emp.idEstado,emp.myID,emp.idRep], (err, rows) => {
             if (err) {
                 res.send('Hubo un error al crear el reporte')
                 console.log('*** ERROR: ', err);
@@ -76,7 +75,61 @@ router.post('/api/crear_respuesta', (req, res) => {
 
             }
         })
-    })
+    
+})
+
+router.get('/api/reportes_atendidos', (req, res) => {
+    var sql = `
+        SELECT * FROM Reportes_atendidos WHERE id_admin = ?
+    `
+        DB_conection.query(sql, [req.session.user.id], (err, rows) => {
+            if (err) {
+                res.send('Hubo un error al crear el reporte')
+                console.log('*** ERROR: ', err);
+
+            } else {
+                res.send(rows)
+                
+
+            }
+        })
+    
+})
+
+router.get('/api/reporte_en_proceso', (req, res) => {
+    var sql = `
+        SELECT * FROM Reportes_proceso WHERE id_admin = ?
+    `
+        DB_conection.query(sql, [req.session.user.id], (err, rows) => {
+            if (err) {
+                res.send('Hubo un error al crear el reporte')
+                console.log('*** ERROR: ', err);
+
+            } else {
+                res.send(rows)
+                
+
+            }
+        })
+    
+})
+
+router.post('/api/actualizar_reporte', (req, res) => {
+    var sql = `
+        CALL actualizar_respuesta(?,?,?,?)
+    `
+        DB_conection.query(sql, [req.body.idEstado, req.body.idRes,req.body.idEstado, req.body.idRep], (err, rows) => {
+            if (err) {
+                res.send('Hubo un error al crear el reporte')
+                console.log('*** ERROR: ', err);
+
+            } else {
+                res.send('Reporte atendido!')
+                
+
+            }
+        })
+    
 })
 
 

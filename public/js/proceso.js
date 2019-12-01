@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     var options = {
         method: 'GET'
     }
-    var myRequest = new Request('/api/reportes_atendidos', options)
+    var myRequest = new Request('/api/reporte_en_proceso', options)
     var request = await fetch(myRequest)
     var resultado = await request.json()
     console.log(resultado);
@@ -31,9 +31,11 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             descripcion: element.descripcion,
             fotoURL: element.fotoURL,
             id: element.id,
+            idReporte: element.idReporte,
             id_admin: element.id_admin,
             latitud: element.latitud,
             longitud: element.longitud,
+            categoria: element.categoria,
             nombre: element.nombre,
             respuesta: element.respuesta
         })
@@ -56,9 +58,9 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                 </div>
                 <div class="contenidoView">
                         <div class="info">
-                            <p> <STRONG>Descripcion: </STRONG> ${element.descripcion}</p>
+                            <p> <STRONG>Descripcion:</STRONG> ${element.descripcion}</p>
                             <p> <STRONG>Categoria: </STRONG> ${element.categoria}</p>
-                            <p> <STRONG>Respuesta: </STRONG> ${element.respuesta}</p>
+                            <p> <STRONG>Respuesta:</STRONG> ${element.respuesta}</p>
                         </div>
                         <div class="multimedia-atendido">
                             <img  src="${element.fotoURL}" class="fotoP">
@@ -66,6 +68,13 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
                             </div>
                         </div>
+                        <form class="form" name="form" id='formulario${element.id}'>
+                            <p> <STRONG> Cambiar estado: </STRONG> </p>
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="Resuelto">Resuelto</label>
+                            </div>
+                            <button type="submit" id="responder" class="btn btn-primary">Atender Reporte</button>
+                        </form>
                     </div>
                     
                     
@@ -77,6 +86,43 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                     var mapa = document.getElementById('map')
                     mapa.onload = iniciarMap(parseFloat(element.latitud), parseFloat(element.longitud))
 
+                    const formularios = document.getElementById(`formulario${element.id}`)
+                    var checkProceso = document.querySelector('#Proceso')
+                    var checkResuelto = document.querySelector('#Resuelto')
+                    
+                    var box
+                    function checked() {
+                        
+                        if (checkResuelto.checked == true) {
+                            box = 3
+                        }
+                    }
+                    formularios.addEventListener('submit', async (e) => {
+                        e.preventDefault()
+                        checked()
+                        const form = new FormData(formularios)
+                        console.log(form.get(`coment`) + box);
+                        var body = {
+                            idEstado: box,
+                            idRep: element.idReporte,
+                            idRes: element.id
+                        }
+                        var opt = {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(body)
+
+                        }
+                        var myReq = new Request('/api/actualizar_reporte', opt)
+                        var resp = await fetch(myReq)
+                        var result = await resp.text()
+
+                        alert(result)
+
+
+                    })
                 }
 
             }

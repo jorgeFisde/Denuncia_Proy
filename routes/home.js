@@ -4,22 +4,30 @@ const DB_conection = require('../service/database')
 const login = require('../routes/login')
 router.get('/home', (req, res) => {
     //renderizar home
-    res.render('index.html')
-    /*if (req.session.user != undefined) {
+    //res.render('index.html')
+    if (req.session.user != undefined) {
         res.render('index.html')
     }
-    res.sendStatus(500)*/
+    res.sendStatus(500)
 })
 
-router.get('/map', (req, res) => {
+router.get('/reportes_atendidos', (req, res) => {
     //renderizar home
-    res.render('map.html')
-    /*if (req.session.user != undefined) {
-        res.render('index.html')
+
+    if (req.session.user != undefined) {
+        res.render('report_atendido.html')
     }
-    res.sendStatus(500)*/
+    res.sendStatus(500)
 })
 
+router.get('/reportes_pendientes', (req, res) => {
+    //renderizar home
+
+    if (req.session.user != undefined) {
+        res.render('proceso.html')
+    }
+    res.sendStatus(500)
+})
 
 router.get('/api/home', login.verifyToken, (req, res) => {
     sql = `
@@ -35,12 +43,12 @@ router.get('/api/home', login.verifyToken, (req, res) => {
                 if (err) {
                     res.send('hubo un error al acceder')
                     console.log('**Error: ' + err);
-                    
+
                 } else {
                     data.user.misReportes = result
-                    res.json(data.user) 
-                    console.log( data.user);
-                    
+                    res.json(data.user)
+                    console.log(data.user);
+
                 }
             })
         }
@@ -61,12 +69,12 @@ router.get('/api/miCuenta', login.verifyToken, (req, res) => {
                 if (err) {
                     res.send('hubo un error al acceder')
                     console.log('**Error: ' + err);
-                    
+
                 } else {
                     data.user.misReportes = result
-                    res.json(data.user) 
-                    console.log( data.user);
-                    
+                    res.json(data.user)
+                    console.log(data.user);
+
                 }
             })
         }
@@ -86,5 +94,7 @@ router.get('/api/home/obtenerCat', (req, res) => {
         }
     })
 })
+
+
 
 module.exports = router
