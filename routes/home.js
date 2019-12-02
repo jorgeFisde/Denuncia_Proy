@@ -31,7 +31,7 @@ router.get('/reportes_pendientes', (req, res) => {
 
 router.get('/api/home', login.verifyToken, (req, res) => {
     sql = `
-    SELECT * FROM MisReportes WHERE idUsuario = ?
+    SELECT * FROM Reporte WHERE idUsuario = ?
     `
     jwt.verify(req.token, 'my_secret_key', (err, data) => {
         if (err) {
@@ -48,6 +48,31 @@ router.get('/api/home', login.verifyToken, (req, res) => {
                     data.user.misReportes = result
                     res.json(data.user)
                     console.log(data.user);
+
+                }
+            })
+        }
+    })
+})
+
+router.get('/api/home', login.verifyToken, (req, res) => {
+    sql = `
+    SELECT * FROM Respuesta_Administrador WHERE idUsuario = ?
+    `
+    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+        if (err) {
+            res.send('Hubo un error al cargar el inicio')
+            console.log('token invalido')
+
+        } else {
+            DB_conection.query(sql, [data.user.id], (err, result) => {
+                if (err) {
+                    res.send('hubo un error al acceder')
+                    console.log('**Error: ' + err);
+
+                } else {
+                    res.json(result)
+                    console.log(result);
 
                 }
             })
