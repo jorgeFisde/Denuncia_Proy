@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <label><input type="checkbox" id="Pendiente">Pendiente</label>
                                 <label><input type="checkbox" id="Proceso">En proceso</label>
                                 <label><input type="checkbox" id="Resuelto">Resuelto</label>
+                                <label><input type="checkbox" id="Rechazado">Rechazado</label>
                             </div>
                             <button type="submit" id="responder" class="btn btn-primary">Atender Reporte</button>
                         </form>
@@ -109,22 +110,32 @@ document.addEventListener('DOMContentLoaded', async () => {
                     var checkPendiente = document.querySelector('#Pendiente')
                     var checkProceso = document.querySelector('#Proceso')
                     var checkResuelto = document.querySelector('#Resuelto')
+                    var checkRechazado = document.querySelector('#Rechazado')
                     function check() {
 
                         checkPendiente.addEventListener('click', () => {
                             checkProceso.checked = false
                             checkResuelto.checked = false
+                            checkRechazado.checked = false
                             return 1
                         })
                         checkProceso.addEventListener('click', () => {
                             checkPendiente.checked = false
                             checkResuelto.checked = false
+                            checkRechazado.checked = false
                             return 2
                         })
                         checkResuelto.addEventListener('click', () => {
                             checkPendiente.checked = false
                             checkProceso.checked = false
+                            checkRechazado.checked = false
                             return 3
+                        })
+                        checkRechazado.addEventListener('click', () => {
+                            checkPendiente.checked = false
+                            checkProceso.checked = false
+                            checkResuelto.checked = false
+                            return 4
                         })
 
                     }
@@ -138,6 +149,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                         }
                         if (checkResuelto.checked == true) {
                             box = 3
+                        }
+                        if (checkRechazado.checked == true) {
+                            box = 4
                         }
                     }
                     check()

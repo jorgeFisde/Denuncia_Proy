@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                             <p> <STRONG> Cambiar estado: </STRONG> </p>
                             <div class="checkbox">
                                 <label><input type="checkbox" id="Resuelto">Resuelto</label>
+                                <label><input type="checkbox" id="Rechazado">Rechazado</label>
                             </div>
                             <button type="submit" id="responder" class="btn btn-primary">Atender Reporte</button>
                         </form>
@@ -89,16 +90,35 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                     mapa.onload = iniciarMap(parseFloat(element.latitud), parseFloat(element.longitud))
 
                     const formularios = document.getElementById(`formulario${element.id}`)
-                    var checkProceso = document.querySelector('#Proceso')
+                    var checkRechazado = document.querySelector('#Rechazado')
                     var checkResuelto = document.querySelector('#Resuelto')
-                    
+                    function check() {
+
+                        checkResuelto.addEventListener('click', () => {
+                            
+                            checkRechazado.checked = false
+                            return 3
+                        })
+                        checkRechazado.addEventListener('click', () => {
+                            
+                            checkResuelto.checked = false
+                            return 4
+                        })
+
+                    }
                     var box
                     function checked() {
                         
                         if (checkResuelto.checked == true) {
                             box = 3
                         }
+                        if (checkRechazado.checked == true) {
+                            box = 4
+                        }
+                        
+
                     }
+                    check()
                     formularios.addEventListener('submit', async (e) => {
                         e.preventDefault()
                         checked()
