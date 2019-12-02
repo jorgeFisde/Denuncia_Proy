@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             idReporte: element.idReporte,
             id_admin: element.id_admin,
             latitud: element.latitud,
+            fehca: element.fecha,
             longitud: element.longitud,
             categoria: element.categoria,
             nombre: element.nombre,
@@ -61,6 +62,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                             <p> <STRONG>Descripcion:</STRONG> ${element.descripcion}</p>
                             <p> <STRONG>Categoria: </STRONG> ${element.categoria}</p>
                             <p> <STRONG>Respuesta:</STRONG> ${element.respuesta}</p>
+                            <p> <STRONG>fecha: </STRONG> ${element.fecha}</p>
                         </div>
                         <div class="multimedia-atendido">
                             <img  src="${element.fotoURL}" class="fotoP">
