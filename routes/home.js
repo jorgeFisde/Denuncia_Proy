@@ -31,7 +31,7 @@ router.get('/reportes_pendientes', (req, res) => {
 
 router.get('/api/home', login.verifyToken, (req, res) => {
     sql = `
-    SELECT * FROM Reporte WHERE idUsuario = ?
+    SELECT * FROM MisReportes WHERE idUsuario = ?
     `
     jwt.verify(req.token, 'my_secret_key', (err, data) => {
         if (err) {
@@ -57,7 +57,7 @@ router.get('/api/home', login.verifyToken, (req, res) => {
 
 router.get('/api/home', login.verifyToken, (req, res) => {
     sql = `
-    SELECT * FROM Respuesta_Administrador WHERE idUsuario = ?
+    SELECT * FROM Respuesta_Administrador WHERE id_Administrador = ?
     `
     jwt.verify(req.token, 'my_secret_key', (err, data) => {
         if (err) {
