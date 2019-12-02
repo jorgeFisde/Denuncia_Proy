@@ -57,7 +57,7 @@ router.get('/api/home', login.verifyToken, (req, res) => {
 
 router.get('/api/miCuenta', login.verifyToken, (req, res) => {
     sql = `
-    SELECT * FROM Reporte WHERE id_Usuario = ?
+    SELECT * FROM Reportes WHERE id_Usuario = ?
     `
     jwt.verify(req.token, 'my_secret_key', (err, data) => {
         if (err) {
