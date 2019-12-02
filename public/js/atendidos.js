@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             id: element.id,
             idReporte: element.idReporte,
             id_admin: element.id_admin,
-            fehca: element.fecha,
+            fecha: element.fecha,
             latitud: element.latitud,
             longitud: element.longitud,
             categoria: element.categoria,

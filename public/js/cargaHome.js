@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             fotoURL: element.fotoURL,
             lat: element.latitud,
             lon: element.longitud,
+            fecha: element.fecha,
             idEstado: element.idEstado,
             estado: element.estado,
             estadoDes: element.DescripcionEstado,
@@ -74,6 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <p> <STRONG>Estado:</STRONG> ${element.estado}</p>
                             <p> <STRONG>Descripcion del estado:</STRONG> ${element.estadoDes}</p>
                             <p> <STRONG>Categoria:</STRONG> ${element.categoria}</p>
+                            <p> <STRONG>fecha: </STRONG> ${element.fecha}</p>
                         </div>
                         <div class="multimedia">
                             <img  src="${element.fotoURL}" class="fotoP">
@@ -199,7 +201,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     //<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14569.553640298735!2d -110.29513645 !3d 24.0878327 00000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1574910360789!5m2!1ses-419!2smx"  allowfullscreen=""
 })
 
-function iniciarMap(lat,lon) {
+function iniciarMap(lat, lon) {
     var coord = { lat: lat, lng: lon };
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
