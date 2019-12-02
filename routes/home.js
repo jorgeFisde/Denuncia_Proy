@@ -57,7 +57,7 @@ router.get('/api/home', login.verifyToken, (req, res) => {
 
 router.get('/api/ver_respuestas', login.verifyToken, (req, res) => {
     sql = `
-    SELECT * FROM Respuesta_Administrador WHERE id_Administrador = ?
+    SELECT * FROM ver_respuestas WHERE idUsuario = ?
     `
     jwt.verify(req.token, 'my_secret_key', (err, data) => {
         if (err) {
