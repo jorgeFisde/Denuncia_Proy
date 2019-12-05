@@ -15,7 +15,7 @@ const fileFilter = (req, file, cb) => {
 
 router.get('/api/ver_reportes', (req, res) => {
     var sql = `
-    SELECT * FROM Reportes WHERE idEstado = 1
+    SELECT * FROM Reportes WHERE idEstado = ?
     `
     DB_conection.query(sql, [1], (err, rows) => {
         if (err) {

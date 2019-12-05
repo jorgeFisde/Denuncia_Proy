@@ -55,9 +55,34 @@ router.get('/api/home', login.verifyToken, (req, res) => {
     })
 })
 
+router.get('/api/ver_respuestas', login.verifyToken, (req, res) => {
+    sql = `
+    SELECT * FROM ver_respuestas WHERE idUsuario = ?
+    `
+    jwt.verify(req.token, 'my_secret_key', (err, data) => {
+        if (err) {
+            res.send('Hubo un error al cargar el inicio')
+            console.log('token invalido')
+
+        } else {
+            DB_conection.query(sql, [data.user.id], (err, result) => {
+                if (err) {
+                    res.send('hubo un error al acceder')
+                    console.log('**Error: ' + err);
+
+                } else {
+                    res.json(result)
+                    console.log(result);
+
+                }
+            })
+        }
+    })
+})
+
 router.get('/api/miCuenta', login.verifyToken, (req, res) => {
     sql = `
-    SELECT * FROM Reporte WHERE id_Usuario = ?
+    SELECT * FROM Reportest WHERE id_Usuario = ?
     `
     jwt.verify(req.token, 'my_secret_key', (err, data) => {
         if (err) {
